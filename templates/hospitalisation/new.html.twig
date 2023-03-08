@@ -1,0 +1,11 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Hospitalisation{% endblock %}
+
+{% block sejour %}
+    <h1>Créer  Hospitalisation</h1>
+
+    {{ include('hospitalisation/_form.html.twig') }}
+
+    <a href="{{ path('app_hospitalisation_index') }}"><button type="submit" class="btn btn-primary btn-lg">La liste</button></a>
+{% endblock %}

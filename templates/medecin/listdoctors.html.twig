@@ -1,0 +1,75 @@
+{% extends 'front.html.twig' %}            
+
+{% block title %}liste des medecins {% endblock %}
+
+{% block list %}
+{% for message in app.flashes('info') %}
+        <div class="alert alert-success">
+        {{message}}
+    {% endfor %}
+
+    <h1>Medecins disponibles</h1>
+    
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom_med</th>
+                <th>Prenom_med</th>
+                <th>Tel_med</th>
+                <th>Mail_med</th>
+                <th>Specialite</th>
+                <th>Diplome</th>
+                <th>Photo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for medecin in medecins %}
+            <tr>
+                <td>{{ medecin.id }}</td>
+                <td>{{ medecin.nomMed }}</td>
+                <td>{{ medecin.prenomMed }}</td>
+                <td>{{ medecin.telMed }}</td>
+                <td>{{ medecin.mailMed }}</td>
+                <td>{{ medecin.specialite }}</td>
+                <td>{{ medecin.diplome }}</td>
+                
+                <td>
+            <img src="{{ asset('' ~ medecin.Photo) }}"
+              style="width:100px;height:100px;" />
+              
+          </td>
+         
+          
+          <td>
+          <a href="{{
+              path(
+                'app_medecin_showOperations',
+                {
+                  id: medecin.id
+                }
+              )
+              }}">
+              operations
+            </a>
+          </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+     <a href="{{ path('app_favoris_new') }}">Ajouter un medecin a une liste de favoris</a>  
+   {% for message in app.flashes('info') %}
+        <div class="alert alert-success">
+        {{message}}
+    {% endfor %}
+    <br> <a href="{{ path('stats') }}">Statistiques de liste de favoris</a>
+    <a href="{{ path('map') }}">Maps</a>
+{% endblock %}

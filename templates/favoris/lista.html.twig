@@ -1,0 +1,39 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}liste de favoris{% endblock %}
+
+{% block fav %}
+    <h1>liste de favoris</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Note</th>
+                
+                <th>le medecin favori</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for favori in favoris %}
+            <tr>
+                <td>{{ favori.id }}</td>
+                <td>{{ favori.note }}</td>
+                <td>{{ favori.medecin }}</td>
+                <td>
+                    
+                    <a href="{{ path('app_favoris_show', {'id': favori.id}) }}">show</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+   
+{% endblock %}

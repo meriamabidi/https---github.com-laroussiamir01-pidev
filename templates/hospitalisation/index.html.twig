@@ -1,0 +1,52 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Hospitalisation {% endblock %}
+{% block department %}  {% endblock %}
+
+{% block sejour %}
+
+    <h1>Hospitalisation </h1>
+
+    <table class="table">
+    
+        <thead>
+            <tr>
+                
+                 <th style="background-color: blue; color: white;">Id</th>
+                
+                 <th style="background-color: blue; color: white;">DateEntrée</th>
+                
+                 <th style="background-color: blue; color: white;">DateSortie</th>
+                  <th style="background-color: blue; color: white;">Service</th>
+            
+                
+                 <th style="background-color: blue; color: white;">IdHospitalisation</th>
+                
+                
+                 <th style="background-color: blue; color: white;">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hospitalisation in hospitalisations %}
+            <tr>
+                <td>{{ hospitalisation.id }}</td>
+                <td>{{ hospitalisation.DateEntree ? hospitalisation.DateEntree|date('Y-m-d') : '' }}</td>
+                <td>{{ hospitalisation.DateSortie ? hospitalisation.DateSortie|date('Y-m-d') : '' }}</td>
+                 <td>{{ hospitalisation.Service}}</td>
+                <td>{{ hospitalisation.idHospitalisation }}</td>
+                
+                <td>
+                    <a href="{{ path('app_hospitalisation_show', {'id': hospitalisation.id}) }}"><button type="submit" class="btn btn-primary btn-lg">Afficher</button></a>
+                    <a href="{{ path('app_hospitalisation_edit', {'id': hospitalisation.id}) }}"><button type="submit" class="btn btn-primary btn-lg">Editer</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_hospitalisation_new') }}"><button type="submit" class="btn btn-primary btn-lg">Ajouter</button></a>
+{% endblock %}

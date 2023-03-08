@@ -1,0 +1,13 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Edit Hospitalisation{% endblock %}
+
+{% block sejour %}
+    <h1>Edit Hospitalisation</h1>
+
+    {{ include('hospitalisation/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_hospitalisation_index') }}"><button type="submit" class="btn btn-primary btn-lg">La liste</button></a>
+
+    {{ include('hospitalisation/_delete_form.html.twig') }}
+{% endblock %}

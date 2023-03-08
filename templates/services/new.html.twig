@@ -1,0 +1,11 @@
+{% extends 'back.html.twig' %}
+{% block edit %}
+{% block title %}New Services{% endblock %}
+
+
+    <h1>Create new Services</h1>
+
+    {{ include('services/_form.html.twig') }}
+
+    <a href="{{ path('app_services_index') }}"><button type="submit" class="btn btn-primary btn-lg">la liste</button></a>
+{% endblock %}

@@ -1,0 +1,41 @@
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #ffffff;
+  }
+  body {
+    background-color: var(--secondary-color);
+  }
+  
+  h1 {
+    color: var(--primary-color);
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  table th, table td {
+    border: 1px solid var(--primary-color);
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+  }
+  
+  table tr:nth-child(even) {
+    background-color: #e4e8ea;
+  }
+  
+  a {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+    

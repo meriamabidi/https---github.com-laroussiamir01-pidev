@@ -1,0 +1,61 @@
+{% extends 'back.html.twig' %}
+
+{% block title %}Operations index{% endblock %}
+
+{% block edit %}
+    <h1>Operations </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Lieu</th>
+                <th>Equipe</th>
+                <th>Description</th>
+                <th>Image</th>
+              
+                <th>Medecin Operateur</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for operation in operations %}
+            <tr>
+                <td>{{ operation.id }}</td>
+                <td>{{ operation.date }}</td>
+                <td>{{ operation.lieu }}</td>
+                <td>{{ operation.equipe }}</td>
+                <td>{{ operation.description }}</td>
+               <td>
+            <img src="{{ asset('' ~ operation.image) }}"
+              style="width:100px;height:100px;" />
+          </td>
+          
+                  
+              
+                <td>{{ operation.medecin }}</td>
+            
+                <td>
+                    <a href="{{ path('app_operations_show', {'id': operation.id}) }}">
+
+
+                   
+                    
+                    
+                    </a>
+                    <a href="{{ path('app_operations_edit', {'id': operation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+            
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_operations_new') }}">Create new</a>
+{% endblock %}

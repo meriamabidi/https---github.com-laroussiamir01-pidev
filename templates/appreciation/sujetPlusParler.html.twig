@@ -1,0 +1,29 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Sujets les plus parlés{% endblock %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('front_office/css/services.css') }}">
+
+  
+{% endblock %}
+
+{% block department %}
+    <h1>Sujets les plus parlés</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Sujet</th>
+                <th>Nombre d'occurrences</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sujetPlusParle in sujetsPlusParles %}
+                <tr>
+                    <td>{{ sujetPlusParle.sujet }}</td>
+                    <td>{{ sujetPlusParle.nbOccurences }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

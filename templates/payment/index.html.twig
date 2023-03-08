@@ -1,0 +1,11 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Hello PaymentController!{% endblock %}
+
+{% block department %}
+{{ parent() }}
+ <!-- Use action="/create-checkout-session.php" if your server is PHP based. -->
+    <form action="/checkout" method="POST">
+      <button type="submit" class="btn btn-primary btn-lg">Checkout</button>
+    </form>
+{% endblock %}

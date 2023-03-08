@@ -1,0 +1,49 @@
+{% extends 'base_front.html.twig' %}
+
+{% block title %}Appreciation {% endblock %}
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('front_office/css/services.css') }}">
+
+  
+{% endblock %}
+{% block department %}
+    <h1>Ajouter votre Appreciation à votre Service préféré !!</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th style="background-color: blue; color: white;">Id</th>
+                 <th style="background-color: blue; color: white;">Service</th>
+                <th style="background-color: blue; color: white;">Message</th>
+                <th style="background-color: blue; color: white;">Auteur</th>
+                <th style="background-color: blue; color: white;">DateCreation</th>
+                <th style="background-color: blue; color: white;">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for appreciation in appreciations %}
+            <tr>
+                <td>{{ appreciation.id }}</td>
+                <td>{{ appreciation.sujet }}</td>
+                <td>{{ appreciation.message }}</td>
+                <td>{{ appreciation.auteur }}</td>
+                <td>{{ appreciation.dateCreation ? appreciation.dateCreation|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                 
+                    <a href="{{ path('app_appreciation_show', {'id': appreciation.id}) }}"><button type="submit" class="btn btn-primary btn-lg">Afficher</button></a>
+                    
+                    <a href="{{ path('app_appreciation_edit', {'id': appreciation.id}) }}"><button type="submit" class="btn btn-primary btn-lg">Editer</button></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_appreciation_new') }}"><button type="submit" class="btn btn-primary btn-lg">Ajouter</button></a>
+    <a href="{{ path('stat_sujet_plus_parle') }}"><button type="submit" class="btn btn-primary btn-lg">Le service le plus apprecié</button></a>
+{% endblock %}

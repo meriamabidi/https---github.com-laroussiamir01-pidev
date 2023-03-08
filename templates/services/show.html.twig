@@ -1,0 +1,40 @@
+{% extends 'front.html.twig' %}
+
+{% block title %}Services{% endblock %}
+
+
+{% block department %}
+
+    <h1>Services</h1>
+
+    <table class="table">
+        <tbody>
+           
+            <tr>
+                <th>Type</th>
+                <td>{{ service.type }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ service.description }}</td>
+            </tr>
+             <tr>
+                <th>Chef Service</th>
+                <td>{{ service.ChefService }}</td>
+                 <tr>
+                <th>Prix</th>
+                <td>{{ service.prix }}</td>
+            </tr>
+            </tr>
+        </tbody>
+    </table>
+    
+
+    <a href="{{ path('app_services_index') }}">back to list</a>
+
+    <a href="{{ path('app_services_edit', {'id': service.id}) }}"><button type="submit" class="btn btn-primary btn-lg">editer</button></a>
+ <a href="{{ path('app_services_delete', {'id': service.id}) }}"><button type="submit" class="btn btn-primary btn-lg">Delete</button></a>
+
+    {{ include('services/_delete_form.html.twig') }}
+     <a href="{{ path('checkout') }}"><button type="submit" class="btn btn-primary btn-lg">payment</button></a>
+{% endblock %}
